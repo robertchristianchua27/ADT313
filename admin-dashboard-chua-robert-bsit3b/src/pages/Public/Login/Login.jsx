@@ -28,13 +28,10 @@ function Login() {
     switch (type) {
       case 'email':
         setEmail(event.target.value);
-
         break;
-
       case 'password':
         setPassword(event.target.value);
         break;
-
       default:
         break;
     }
@@ -47,20 +44,19 @@ function Login() {
 
     await axios({
       method: 'post',
-      url: '/admin/login',
+      url: '/user/login',
       data,
       headers: { 'Access-Control-Allow-Origin': '*' },
     })
       .then((res) => {
         console.log(res);
         localStorage.setItem('accessToken', res.data.access_token);
-        navigate('/main/movies');
+        navigate('/home');
         setStatus('idle');
       })
       .catch((e) => {
         console.log(e);
         setStatus('idle');
-        // alert(e.response.data.message);
       });
   };
 
@@ -68,10 +64,24 @@ function Login() {
     setDebounceState(true);
   }, [userInputDebounce]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleLogin]);
+
   return (
     <div className='Login'>
       <div className='main-container'>
-        <h3>Login</h3>
+        <h3>Sign In</h3>
         <form>
           <div className='form-container'>
             <div>
@@ -84,7 +94,7 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'email')}
                 />
               </div>
-              {debounceState && isFieldsDirty && email == '' && (
+              {debounceState && isFieldsDirty && email === '' && (
                 <span className='errors'>This field is required</span>
               )}
             </div>
@@ -98,7 +108,7 @@ function Login() {
                   onChange={(e) => handleOnChange(e, 'password')}
                 />
               </div>
-              {debounceState && isFieldsDirty && password == '' && (
+              {debounceState && isFieldsDirty && password === '' && (
                 <span className='errors'>This field is required</span>
               )}
             </div>
@@ -108,6 +118,7 @@ function Login() {
 
             <div className='submit-container'>
               <button
+                className='btn-primary'
                 type='button'
                 disabled={status === 'loading'}
                 onClick={() => {
@@ -115,26 +126,27 @@ function Login() {
                     return;
                   }
                   if (email && password) {
-                    handleLogin({
-                      type: 'login',
-                      user: { email, password },
-                    });
+                    setStatus('loading');
+                    setTimeout(() => {
+                      handleLogin();
+                      setStatus('idle');
+                    }, 2000); // 2 seconds delay
                   } else {
                     setIsFieldsDirty(true);
-                    if (email == '') {
+                    if (email === '') {
                       emailRef.current.focus();
                     }
-
-                    if (password == '') {
+                    if (password === '') {
                       passwordRef.current.focus();
                     }
                   }
                 }}
               >
-                {status === 'idle' ? 'Login' : 'Loading'}
+                {status === 'idle' ? 'Login' : 'Loading, Please wait...'}
               </button>
             </div>
             <div className='register-container'>
+              <small>Don't have an account? </small>
               <a href='/register'>
                 <small>Register</small>
               </a>

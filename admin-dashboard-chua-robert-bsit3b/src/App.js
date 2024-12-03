@@ -1,48 +1,34 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
+import logo from './logo.svg';
+import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './index.css';
-import Login from './pages/Public/Login/Login';
-import Register from './pages/Public/Login/Register'; // Ensure this path is correct
-import Dashboard from './pages/Main/Dashboard/Dashboard';
 import Main from './pages/Main/Main';
-import Movie from './pages/Main/Movie/Movie';
-import Lists from './pages/Main/Movie/Lists/Lists';
-import Form from './pages/Main/Movie/Form/Form';
-
+import Home from './pages/Main/Movie/Home/Home';
+import MovieContextProvider from './context/MovieContext';
+import View from './pages/Main/Movie/View/View';
+import Login from './pages/Public/Login/Login';
+import Register from './pages/Public/Register/Register';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/login',
     element: <Login />,
   },
   {
-    path: '/register', // Correct route for registration
-    element: <Register />,
-  },
-  {
-    path: '/main',
+  path: '/register',
+  element: <Register />,
+},
+{
+    path: '/',
     element: <Main />,
     children: [
-      //{
-        //path: '/main/dashboard',
-       // element: <Dashboard />,
-      //},
       {
-        path: '/main/movies',
-        element: <Movie />,
-        children: [
-          {
-            path: '/main/movies',
-            element: <Lists />,
-          },
-          {
-            path: '/main/movies/form/:movieId?',
-            element: <Form />,
-          },
-        ],
+        path: '/home',
+        element: <Home />,
       },
-
+      {
+        path: '/view/:movieId?',
+        element: <View />,
+      },
     ],
   },
 ]);
@@ -50,7 +36,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className='App'>
-      <RouterProvider router={router} />
+      <MovieContextProvider>
+        <RouterProvider router={router} />
+      </MovieContextProvider>
     </div>
   );
 }
