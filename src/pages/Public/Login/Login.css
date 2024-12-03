@@ -1,0 +1,116 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+   background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Container Styling */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.form-container {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  background-color: #fafafa;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+}
+
+.errors {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Button Styling */
+.submit-container {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.submit-container button {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-container button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.submit-container button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Show Password Styling */
+.show-password {
+  display: block;
+  margin: 1rem 0;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Register Link Styling */
+.register-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-container a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.register-container a:hover {
+  color: #0056b3;
+}

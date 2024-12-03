@@ -1,0 +1,147 @@
+/* General Reset */
+* {
+  box-sizing: border-box; /* Ensures consistent sizing */
+  margin: 0;
+  padding: 0;
+}
+
+/* Body Styling */
+body {
+  display: flex; /* Flex layout for sidebar and content */
+  flex-direction: row;
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden; /* Prevent unnecessary scrolling on the body */
+}
+
+/* Sidebar Styling (if applicable) */
+.sidebar {
+  width: 20%; /* Sidebar takes 20% of the screen width */
+  min-width: 200px; /* Ensures the sidebar doesn't shrink too much */
+  background-color: #f0f0f0; /* Background for sidebar */
+  padding: 20px;
+  overflow: hidden; /* Sidebar remains fixed and doesn't scroll */
+  height: 100vh; /* Full height of the viewport */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Main Content Area */
+.container {
+  flex: 1; /* Fills the remaining space after sidebar */
+  overflow-y: auto; /* Vertical scrolling for overflow content */
+  padding: 20px;
+  background-color: #fff; /* Background for main content */
+  height: 100vh; /* Ensure it fits the viewport height */
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Field Styling */
+.field {
+  margin-bottom: 15px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Poster Image */
+.poster-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Videos Section */
+.videos {
+  margin-top: 30px;
+}
+
+.videos h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.videos a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.videos a:hover {
+  text-decoration: underline;
+}
+
+/* Casts Section */
+.casts {
+  margin-top: 30px;
+}
+
+.casts h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.casts p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+/* Photos Section */
+.photos {
+  margin-top: 30px;
+}
+
+.photos h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.photos img {
+  max-width: 200px;
+  height: auto;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.photos img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 30%; /* Sidebar adjusts to take up more width on smaller screens */
+    min-width: 150px; /* Minimum width for smaller devices */
+  }
+
+  .container {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 40%; /* Sidebar takes up even more space on very small screens */
+  }
+
+  .videos h2, .casts h2, .photos h2 {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+  }
+}
