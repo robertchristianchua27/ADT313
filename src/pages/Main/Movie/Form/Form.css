@@ -1,27 +1,27 @@
-/* General Reset */
+
 * {
-  box-sizing: border-box; /* Ensures consistent sizing */
+  box-sizing: border-box; 
   margin: 0;
   padding: 0;
 }
 
-/* Body Styling */
+
 body {
-  display: flex; /* Flex layout for sidebar and content */
+  display: flex; 
   flex-direction: row;
-  height: 100vh; /* Full height of the viewport */
-  overflow: hidden; /* Prevent unnecessary scrolling on the body */
+  height: 100vh; 
+  overflow: hidden; 
 }
 
-/* Sidebar Styling (if applicable) */
+
 .sidebar {
-  width: 20%; /* Sidebar takes 20% of the screen width */
-  min-width: 200px; /* Ensures the sidebar doesn't shrink too much */
-  background-color: #f0f0f0; /* Background for sidebar */
+  width: 20%; 
+  min-width: 200px; 
+  background-color: #f0f0f0;
   padding: 20px;
-  overflow: hidden; /* Sidebar remains fixed and doesn't scroll */
-  height: 100vh; /* Full height of the viewport */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  overflow: hidden; 
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
 }
 
 /* Main Content Area */
